@@ -8,4 +8,17 @@ spec:
       image: alpine
       script: |
         echo "Cleaning workspace"
-        rm -rf /workspace/*    # ✅ TASK 4
+        rm -rf /workspace/*    # ✅ TASK 4  
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: run-tests
+spec:
+  steps:
+    - name: test
+      image: python:3.9
+      script: |
+        pip install pytest
+        pytest           # ✅ TASK 5
